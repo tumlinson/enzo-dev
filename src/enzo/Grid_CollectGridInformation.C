@@ -49,7 +49,7 @@ int grid::CollectGridInformation(int &GridMemory, float &GridVolume,
                (sizeof(float)*(GridRank+2+NumberOfParticleAttributes) +
                 sizeof(FLOAT)*GridRank);
  
-  printf("WHAT THE HELL\n", sizeof(float), sizeof(FLOAT))
+  printf("WHAT THE HELL %d %d\n", sizeof(float), sizeof(FLOAT))
   AxialRatio = float(MaxDim)/float(MinDim);
 
   printf("JT Grid_CGI0: \n"); 
