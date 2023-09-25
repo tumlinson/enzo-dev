@@ -55,7 +55,9 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   int i, GridMemory, NumberOfCells, CellsTotal, Particles, GridsMoved, proc;
   float AxialRatio, GridVolume;
   float *ComputeTime = new float[NumberOfGrids];
+  float *ComputeTime2 = new float[NumberOfGrids];
   float *ProcessorComputeTime = new float[NumberOfProcessors];
+  float *ProcessorComputeTime2 = new float[NumberOfProcessors];
   int *NewProcessorNumber = new int[NumberOfGrids];
  
 #ifdef MPI_INSTRUMENTATION
@@ -76,25 +78,23 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
  
   /* Compute work for each grid. */
   for (i = 0; i < NumberOfGrids; i++) {
-    printf("JT CLBG start\n");
     proc = GridHierarchyPointer[i]->GridData->ReturnProcessorNumber();
     GridHierarchyPointer[i]->GridData->CollectGridInformation
       (GridMemory, GridVolume, NumberOfCells, AxialRatio, CellsTotal, Particles);
     //    ComputeTime[i] = GridMemory; // roughly speaking
     printf("JT CLBG: Proc %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, i, NumberOfCells, CellsTotal, GridMemory, Particles);
     
-    //ComputeTime[i] = float(GridMemory); // roughly speaking
     ComputeTime[i] = float(NumberOfCells);
+    ComputeTime2[i] = float(GridMemory); // roughly speaking
     ProcessorComputeTime[proc] += ComputeTime[i];
+    ProcessorComputeTime2[proc] += ComputeTime2[i];
     NewProcessorNumber[i] = proc;
-
-    printf("JT CLBG end\n");
   }
 
   // JT 
   for (i = 0; i < NumberOfProcessors; i++)
-    printf("JT ProcessorComputeTime[%d] = %f \n", i, ProcessorComputeTime[i]); 
-
+    printf("JT ProcessorComputeTime[%d] = %f \n", i, ProcessorComputeTime[i], ProcessorComputeTime2[i]); 
+ 
  // Mode 1: Load balance over all processors.  Mode 2/3: Load balance
  // only within a node.  Assumes scheduling in blocks (2) or
  // round-robin (3).
