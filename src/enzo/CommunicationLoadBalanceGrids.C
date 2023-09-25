@@ -93,7 +93,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
 
   // JT 
   for (i = 0; i < NumberOfProcessors; i++)
-    printf("JT ProcessorComputeTime[%d] = %f \n", i, ProcessorComputeTime[i], ProcessorComputeTime2[i]); 
+    printf("JT ProcessorComputeTime[%d] = %f %f\n", i, ProcessorComputeTime[i], ProcessorComputeTime2[i]); 
  
  // Mode 1: Load balance over all processors.  Mode 2/3: Load balance
  // only within a node.  Assumes scheduling in blocks (2) or
