@@ -77,11 +77,14 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   /* Compute work for each grid. */
  
   for (i = 0; i < NumberOfGrids; i++) {
+    printf("JT CLBG start");
     proc = GridHierarchyPointer[i]->GridData->ReturnProcessorNumber();
     GridHierarchyPointer[i]->GridData->CollectGridInformation
       (GridMemory, GridVolume, NumberOfCells, AxialRatio, CellsTotal, Particles);
     //    ComputeTime[i] = GridMemory; // roughly speaking
     printf("JT CLBG: Proc %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, i, NumberOfCells, CellsTotal, GridMemory, Particles);
+    printf("JT CLBG end");
+
     ComputeTime[i] = float(NumberOfCells);
     ProcessorComputeTime[proc] += ComputeTime[i];
     NewProcessorNumber[i] = proc;
