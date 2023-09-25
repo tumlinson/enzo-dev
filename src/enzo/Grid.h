@@ -135,7 +135,7 @@ class grid
   int NumberOfStars;
   Star *Stars;
 
-  //
+//
 //  Active particle data
 //
   float* ActiveParticleAcceleration[MAX_DIMENSION+1];
