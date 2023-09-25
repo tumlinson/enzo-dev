@@ -83,8 +83,8 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
     //    ComputeTime[i] = GridMemory; // roughly speaking
     printf("JT CLBG: Proc %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, i, NumberOfCells, CellsTotal, GridMemory, Particles);
     
-    ComputeTime[i] = float(GridMemory); // roughly speaking
-    // ComputeTime[i] = float(NumberOfCells);
+    //ComputeTime[i] = float(GridMemory); // roughly speaking
+    ComputeTime[i] = float(NumberOfCells);
     ProcessorComputeTime[proc] += ComputeTime[i];
     NewProcessorNumber[i] = proc;
 
