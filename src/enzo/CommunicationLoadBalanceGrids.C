@@ -311,8 +311,8 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
 #endif
   if (MyProcessorNumber == ROOT_PROCESSOR && GridsMoved > 0) {
     tt1 = ReturnWallTime();
-    printf("LoadBalance: Number of grids moved = %"ISYM" out of %"ISYM" "
-	   "(%lg seconds elapsed)\n", GridsMoved, NumberOfGrids, tt1-tt0);
+    printf("LoadBalance: Level = %"ISYM", Number of grids moved = %"ISYM" out of %"ISYM" "
+	   "(%lg seconds elapsed)\n", GridLevel, GridsMoved, NumberOfGrids, tt1-tt0);
   }
 #ifdef UNUSED
   CommunicationSumValues(ProcessorComputeTime, NumberOfProcessors);
