@@ -76,7 +76,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   for (i = 0; i < NumberOfProcessors; i++)
     ProcessorComputeTime[i] = 0;
  
-  prinf("         ")
+  prinf("         "); 
   
   /* Compute work for each grid. */
   for (i = 0; i < NumberOfGrids; i++) {
@@ -315,7 +315,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
     tt1 = ReturnWallTime();
     printf("LoadBalance: Level = %"ISYM", Number of grids moved = %"ISYM" out of %"ISYM" "
 	   "(%lg seconds elapsed)\n", GridLevel, GridsMoved, NumberOfGrids, tt1-tt0);
-    prinf("         ")
+    prinf("         "); 
   }
 #ifdef UNUSED
   CommunicationSumValues(ProcessorComputeTime, NumberOfProcessors);
