@@ -76,6 +76,8 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   for (i = 0; i < NumberOfProcessors; i++)
     ProcessorComputeTime[i] = 0;
  
+  prinf("         ")
+  
   /* Compute work for each grid. */
   for (i = 0; i < NumberOfGrids; i++) {
     proc = GridHierarchyPointer[i]->GridData->ReturnProcessorNumber();
@@ -93,7 +95,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
 
   // JT 
   for (i = 0; i < NumberOfProcessors; i++)
-    printf("JT Proc %d ProcessorComputeTime[%d] = %f %f\n", MyProcessorNumber, i, ProcessorComputeTime[i], ProcessorComputeTime2[i]); 
+    printf("JT Gridlevel %d Proc %d ProcessorComputeTime[%d] = %f %f\n", GridLevel, MyProcessorNumber, i, ProcessorComputeTime[i], ProcessorComputeTime2[i]); 
  
  // Mode 1: Load balance over all processors.  Mode 2/3: Load balance
  // only within a node.  Assumes scheduling in blocks (2) or
@@ -313,6 +315,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
     tt1 = ReturnWallTime();
     printf("LoadBalance: Level = %"ISYM", Number of grids moved = %"ISYM" out of %"ISYM" "
 	   "(%lg seconds elapsed)\n", GridLevel, GridsMoved, NumberOfGrids, tt1-tt0);
+    prinf("         ")
   }
 #ifdef UNUSED
   CommunicationSumValues(ProcessorComputeTime, NumberOfProcessors);
