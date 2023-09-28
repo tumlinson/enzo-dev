@@ -578,7 +578,7 @@ int RebuildHierarchy(TopGridData *MetaData,
       case 2:
       case 3:
 	        if (i >= LoadBalancingMinLevel && i <= LoadBalancingMaxLevel)
-            printf("Calling JT CLBG NumberOfGrids = %d", subgrids);
+            printf("Calling JT CLBG NumberOfGrids = %d\n", subgrids);
 	          CommunicationLoadBalanceGrids(SubgridHierarchyPointer, subgrids, MoveParticles);
 	        break;
       case 4:
