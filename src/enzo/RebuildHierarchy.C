@@ -578,7 +578,7 @@ int RebuildHierarchy(TopGridData *MetaData,
       case 2:
       case 3:
 	        if (i >= LoadBalancingMinLevel && i <= LoadBalancingMaxLevel)
-            printf("Rebld Hier Call CLBG NumberOfGrids = %d GridLevel %d Processor = %d\n", subgrids, GridLevel, MyProcessorNumber);
+            printf("Rebld Hier Call CLBG NumberOfGrids = %d Processor = %d\n", subgrids, MyProcessorNumber);
 	          CommunicationLoadBalanceGrids(SubgridHierarchyPointer, subgrids, MoveParticles);
 	        break;
       case 4:
