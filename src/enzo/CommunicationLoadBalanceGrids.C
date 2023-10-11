@@ -55,9 +55,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   int i, GridMemory, NumberOfCells, CellsTotal, Particles, GridsMoved, proc;
   float AxialRatio, GridVolume;
   float *ComputeTime = new float[NumberOfGrids];
-  float *ComputeTime2 = new float[NumberOfGrids];
   float *ProcessorComputeTime = new float[NumberOfProcessors];
-  float *ProcessorComputeTime2 = new float[NumberOfProcessors];
   int *NewProcessorNumber = new int[NumberOfGrids];
  
 #ifdef MPI_INSTRUMENTATION
@@ -76,7 +74,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   for (i = 0; i < NumberOfProcessors; i++)
     ProcessorComputeTime[i] = 0;
  
-  printf("         "); 
+    printf("         "); 
   
   /* Compute work for each grid. */
   for (i = 0; i < NumberOfGrids; i++) {
@@ -88,9 +86,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
     printf("JT CLBG: Proc %d, Level %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, GridLevel, i, NumberOfCells, CellsTotal, GridMemory, Particles);
     
     ComputeTime[i] = float(NumberOfCells);
-    ComputeTime2[i] = float(GridMemory); // roughly speaking
     ProcessorComputeTime[proc] += ComputeTime[i];
-    ProcessorComputeTime2[proc] += ComputeTime2[i];
     NewProcessorNumber[i] = proc;
   }
 
