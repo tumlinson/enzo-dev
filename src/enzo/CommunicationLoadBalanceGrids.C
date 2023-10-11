@@ -52,7 +52,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
  
   /* Initialize */
  
-  int i, GridMemory, NumberOfCells, CellsTotal, Particles, GridsMoved, proc;
+  int i, GridMemory, NumberOfCells, CellsTotal, Particles, GridsMoved, GridLevel, proc;
   float AxialRatio, GridVolume;
   float *ComputeTime = new float[NumberOfGrids];
   float *ComputeTime2 = new float[NumberOfGrids];
@@ -81,10 +81,11 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   /* Compute work for each grid. */
   for (i = 0; i < NumberOfGrids; i++) {
     proc = GridHierarchyPointer[i]->GridData->ReturnProcessorNumber();
+    GridLevel = GridHierarchyPointer[i]->GridData->GetLevel();
     GridHierarchyPointer[i]->GridData->CollectGridInformation
       (GridMemory, GridVolume, NumberOfCells, AxialRatio, CellsTotal, Particles);
     //    ComputeTime[i] = GridMemory; // roughly speaking
-    printf("JT CLBG: Proc %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, i, NumberOfCells, CellsTotal, GridMemory, Particles);
+    printf("JT CLBG: Proc %d, Level %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, GridLevel, i, NumberOfCells, CellsTotal, GridMemory, Particles);
     
     ComputeTime[i] = float(NumberOfCells);
     ComputeTime2[i] = float(GridMemory); // roughly speaking
