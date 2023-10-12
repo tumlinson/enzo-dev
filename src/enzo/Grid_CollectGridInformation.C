@@ -45,8 +45,6 @@ int grid::CollectGridInformation(int &GridMemory, float &GridVolume,
 
   Particles = NumberOfParticles;
  
-  if (level <= 3)
-    GridMemory = CellsTotal; 
   if (level > 3) 
     GridMemory = GridMemory + NumberOfParticles*
                (sizeof(float)*(GridRank+2+NumberOfParticleAttributes) +
