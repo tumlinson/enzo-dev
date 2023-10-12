@@ -44,7 +44,7 @@ double ReturnWallTime(void);
 #define NO_SYNC_TIMING
  
 int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
-				  int NumberOfGrids, int MoveParticles)
+				  int NumberOfGrids, int MoveParticles, int level)
 {
  
   if (NumberOfProcessors == 1 || NumberOfGrids <= 1)
@@ -83,7 +83,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
     GridHierarchyPointer[i]->GridData->CollectGridInformation
       (GridMemory, GridVolume, NumberOfCells, AxialRatio, CellsTotal, Particles);
     //    ComputeTime[i] = GridMemory; // roughly speaking
-    printf("JT CLBG: Proc %d, Level %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, GridLevel, i, NumberOfCells, CellsTotal, GridMemory, Particles);
+    printf("JT CLBG: Proc %d, Level %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, level, i, NumberOfCells, CellsTotal, GridMemory, Particles);
     
     ComputeTime[i] = float(NumberOfCells);
     ProcessorComputeTime[proc] += ComputeTime[i];
