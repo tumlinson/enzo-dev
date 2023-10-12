@@ -79,7 +79,6 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   /* Compute work for each grid. */
   for (i = 0; i < NumberOfGrids; i++) {
     proc = GridHierarchyPointer[i]->GridData->ReturnProcessorNumber();
-    GridLevel = GridHierarchyPointer[i]->this->GetLevel();
     GridHierarchyPointer[i]->GridData->CollectGridInformation
       (GridMemory, GridVolume, NumberOfCells, AxialRatio, CellsTotal, Particles);
     //    ComputeTime[i] = GridMemory; // roughly speaking
