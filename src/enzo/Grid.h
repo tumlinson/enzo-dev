@@ -711,7 +711,7 @@ gradient force to gravitational force for one-zone collapse test. */
 
    int CollectGridInformation(int &GridMemory, float &GridVolume, 
                               int &NumberOfCells, float &AxialRatio,
-                              int &CellsTotal, int &Particles);
+                              int &CellsTotal, int &Particles, int level);
 
 /* Output grid information (for movie generation). */
 
