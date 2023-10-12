@@ -44,7 +44,7 @@ double ReturnWallTime(void);
 #define NO_SYNC_TIMING
  
 int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
-				  int NumberOfGrids, int MoveParticles, int level)
+				  int NumberOfGrids, int level, int MoveParticles)
 {
  
   if (NumberOfProcessors == 1 || NumberOfGrids <= 1)

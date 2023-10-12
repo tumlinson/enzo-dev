@@ -52,7 +52,7 @@ int DepositActiveParticleMassFlaggingField(LevelHierarchyEntry* LevelArray[],
 int CommunicationShareGrids(HierarchyEntry *GridHierarchyPointer[], int grids,
 			    int ShareParticles = TRUE);     
 int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
-				  int NumberOfGrids, int MoveParticles = TRUE, int level);
+				  int NumberOfGrids, int level, int MoveParticles = TRUE);
 int LoadBalanceHilbertCurve(HierarchyEntry *GridHierarchyPointer[],
 			    int NumberOfGrids, int MoveParticles = TRUE);
 int CommunicationTransferSubgridParticles(LevelHierarchyEntry *LevelArray[],
@@ -579,7 +579,7 @@ int RebuildHierarchy(TopGridData *MetaData,
       case 3:
 	        if (i >= LoadBalancingMinLevel && i <= LoadBalancingMaxLevel)
             printf("Rebld Hier Call CLBG NumberOfGrids = %d, Level = %d, Processor = %d\n", subgrids, level, MyProcessorNumber);
-	          CommunicationLoadBalanceGrids(SubgridHierarchyPointer, subgrids, MoveParticles, level);
+	          CommunicationLoadBalanceGrids(SubgridHierarchyPointer, subgrids, level, MoveParticles);
 	        break;
       case 4:
 	        if (i >= LoadBalancingMinLevel && i <= LoadBalancingMaxLevel)
