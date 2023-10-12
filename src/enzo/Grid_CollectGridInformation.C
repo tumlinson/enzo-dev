@@ -23,7 +23,7 @@
  
 int grid::CollectGridInformation(int &GridMemory, float &GridVolume,
 				 int &CellsActive, float &AxialRatio,
-				 int &CellsTotal, int &Particles)
+				 int &CellsTotal, int &Particles, int level)
 {
  
   GridMemory    = NumberOfBaryonFields*sizeof(float);
@@ -52,7 +52,7 @@ int grid::CollectGridInformation(int &GridMemory, float &GridVolume,
   AxialRatio = float(MaxDim)/float(MinDim);
 
   printf("JT Grid_CGI0: \n"); 
-  printf("JT Grid_CGI1: ID=%d GridLevel=%d  #Cells %d CellsTot %d GridMem %d Part %d Stars %d\n", ID, GridLevel, CellsActive, CellsTotal, GridMemory, NumberOfParticles, NumberOfStars);
+  printf("JT Grid_CGI1: ID=%d GridLevel=%d  #Cells %d CellsTot %d GridMem %d Part %d Stars %d\n", ID, level, CellsActive, CellsTotal, GridMemory, NumberOfParticles, NumberOfStars);
   printf("JT Grid_CGI2: ID=%d   LeftEdge: %f %f %f\n", ID, GridLeftEdge[0], GridLeftEdge[1], GridLeftEdge[2]);
   printf("JT Grid_CGI3: ID=%d  RightEdge: %f %f %f\n", ID, GridRightEdge[0], GridRightEdge[1], GridRightEdge[2]);
 
