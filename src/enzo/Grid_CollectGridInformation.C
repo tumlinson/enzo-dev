@@ -42,20 +42,17 @@ int grid::CollectGridInformation(int &GridMemory, float &GridVolume,
     MaxDim = max(MaxDim, DimActive);
     MinDim = min(MinDim, DimActive);
   }
-
-  Particles = NumberOfParticles;
  
   if (level > 3) 
     GridMemory = GridMemory + NumberOfParticles*
-               (sizeof(float)*(GridRank+2+NumberOfParticleAttributes) +
-                sizeof(FLOAT)*GridRank);
+               (sizeof(float)*(GridRank+2+NumberOfParticleAttributes) + sizeof(float)*GridRank);
  
   AxialRatio = float(MaxDim)/float(MinDim);
 
-  //printf("JT Grid_CGI0: The input grid level is: %d\n", level); 
-  //printf("JT Grid_CGI1: ID=%d GridLevel=%d  #Cells %d CellsTot %d GridMem %d Part %d \n", ID, level, CellsActive, CellsTotal, GridMemory, Particles);
-  //printf("JT Grid_CGI2: ID=%d   LeftEdge: %f %f %f\n", ID, GridLeftEdge[0], GridLeftEdge[1], GridLeftEdge[2]);
-  //printf("JT Grid_CGI3: ID=%d  RightEdge: %f %f %f\n", ID, GridRightEdge[0], GridRightEdge[1], GridRightEdge[2]);
+  printf("JT Grid_CGI0: The input grid level is: %d\n", level); 
+  printf("JT Grid_CGI1: ID=%d GridLevel=%d  #Cells %d CellsTot %d GridMem %d Part %d \n", ID, level, CellsActive, CellsTotal, GridMemory, NumberOfParticles);
+  printf("JT Grid_CGI2: ID=%d   LeftEdge: %f %f %f\n", ID, GridLeftEdge[0], GridLeftEdge[1], GridLeftEdge[2]);
+  printf("JT Grid_CGI3: ID=%d  RightEdge: %f %f %f\n", ID, GridRightEdge[0], GridRightEdge[1], GridRightEdge[2]);
 
   return SUCCESS;
  
