@@ -74,13 +74,13 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
   for (i = 0; i < NumberOfProcessors; i++)
     ProcessorComputeTime[i] = 0;
  
-    printf("         "); 
+    printf("         \n"); 
   
   /* Compute work for each grid. */
   for (i = 0; i < NumberOfGrids; i++) {
     proc = GridHierarchyPointer[i]->GridData->ReturnProcessorNumber();
     GridHierarchyPointer[i]->GridData->CollectGridInformation
-      (GridMemory, GridVolume, NumberOfCells, AxialRatio, CellsTotal, Particles, level);
+          (GridMemory, GridVolume, NumberOfCells, AxialRatio, CellsTotal, Particles, level);
     ComputeTime[i] = GridMemory; // roughly speaking
     printf("JT CLBG: Proc %d, Level %d, i %d #Cells %d CellsTot %d GridMem %d Part %d\n", MyProcessorNumber, level, i, NumberOfCells, CellsTotal, GridMemory, Particles);
     
@@ -91,7 +91,7 @@ int CommunicationLoadBalanceGrids(HierarchyEntry *GridHierarchyPointer[],
 
   // JT 
   for (i = 0; i < NumberOfProcessors; i++)
-    printf("JT Proc %d ProcessorComputeTime[%d] = %f %f\n", MyProcessorNumber, i, ProcessorComputeTime[i]); 
+    printf("JT Proc %d ProcessorComputeTime[%d] = %f \n", MyProcessorNumber, i, ProcessorComputeTime[i]); 
  
  // Mode 1: Load balance over all processors.  Mode 2/3: Load balance
  // only within a node.  Assumes scheduling in blocks (2) or
